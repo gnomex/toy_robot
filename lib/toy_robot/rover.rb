@@ -4,13 +4,13 @@ module ToyRobot
     ALLOWED_DIRECTIONS = ["NORTH", "SOUTH", "EAST", "WEST"]
     BOARD = { x_dim: 5, y_dim: 5 }
     MOVING = {
-      "LEFT": {
+      "RIGHT": {
         "NORTH": "EAST",
         "EAST": "SOUTH",
         "SOUTH": "WEST",
         "WEST": "NORTH"
       }, 
-      "RIGHT": {
+      "LEFT": {
         "NORTH": "WEST",
         "WEST": "SOUTH",
         "SOUTH": "EAST",
@@ -57,7 +57,6 @@ module ToyRobot
       
       if cmd == "MOVE"
         recalculate_position
-        puts "moving to #{@position} and looking to #{@direction_to_move}"
       end
       
       if cmd == "REPORT"
