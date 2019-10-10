@@ -21,5 +21,4 @@ OptionParser.new do |opts|
 end.parse!
 
 robot = ToyRobot::Rover.new($options[:commands])
-robot.do_the_thing
-
+robot.go!
