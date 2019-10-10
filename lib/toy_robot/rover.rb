@@ -35,7 +35,7 @@ module ToyRobot
       @is_on_the_table
     end
  
-    def report
+    def report!
       "#{@position[:x]},#{@position[:y]},#{@direction_to_move}"
     end
 
@@ -52,7 +52,9 @@ module ToyRobot
 
         return unless good_to_start? co
 
-        return place_on_board co.split(',')
+        x, y, f = co.split(',')
+
+        return place_on_board(x: x.to_i, y: y.to_i, f: f)
       end
 
       return unless is_on_the_table? #JUST IGNORE IF NOT ON THE TABLE!
@@ -61,7 +63,7 @@ module ToyRobot
       
       return go_ahead if cmd == "MOVE"
       
-      return puts report if cmd == "REPORT"
+      return puts report! if cmd == "REPORT"
     end
 
     def good_to_start?(xyf)
@@ -82,12 +84,11 @@ module ToyRobot
       @direction_to_move = MOVING[direction.to_sym][@direction_to_move.to_sym].to_s
     end
 
-    # SMELLS here
-    def place_on_board(directions)
-      @position[:x] = directions[0].to_i
-      @position[:y] = directions[1].to_i
+    def place_on_board(x:, y:, f:)
+      @position[:x] = x
+      @position[:y] = y
 
-      @direction_to_move = directions[2]
+      @direction_to_move = f
       
       @is_on_the_table = true
     end
