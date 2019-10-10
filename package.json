@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7",
+    "jquery": "^3.4.1",
+    "jquery-ujs": "^1.2.2",
+    "rails-ujs": "^5.2.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.8.2"
+  }
+}

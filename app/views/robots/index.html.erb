@@ -1,0 +1,52 @@
+<div class='wrapper'>
+  <div class='row'>
+    <div class='column'>
+      <p id="notice"><%= notice %></p>
+      <div class="white effect">&#x1f916;</div>
+
+      <div>
+
+        <% if @robot.is_on_the_table? %>
+          <p><%= @robot.spy %></p>  
+        <% end %>
+        
+      </div>
+
+    </div>
+
+    <div class='column'>
+      <div class="roverboard">
+      	<!-- 1st -->
+      	<div id="00" class="white effect"></div>
+      	<div id="01" class="black effect"></div>
+      	<div id="02" class="white effect"></div>
+      	<div id="03" class="black effect"></div>
+      	<div id="04" class="white effect"></div>
+      	<!-- 2nd -->
+      	<div id="10" class="black effect"></div>
+      	<div id="11" class="white effect"></div>
+      	<div id="12" class="black effect"></div>
+      	<div id="13" class="white effect"></div>
+      	<div id="14" class="black effect"></div>
+      	<!-- 3th -->
+      	<div id="20" class="white effect"></div>
+      	<div id="21" class="black effect"></div>
+      	<div id="22" class="white effect"></div>
+      	<div id="23" class="black effect"></div>
+      	<div id="24" class="white effect"></div>
+      	<!-- 4st -->
+      	<div id="30" class="black effect"></div>
+      	<div id="31" class="white effect"></div>
+      	<div id="32" class="black effect"></div>
+      	<div id="33" class="white effect"></div>
+      	<div id="34" class="black effect"></div>
+      	<!-- 5th -->
+      	<div id="40" class="white effect"></div>
+      	<div id="41" class="black effect"></div>
+      	<div id="42" class="white effect"></div>
+      	<div id="43" class="black effect"></div>
+      	<div id="44" class="white effect"></div>
+      </div>
+    </div>
+  </div>
+</div>
