@@ -106,22 +106,32 @@ movement of the toy robot on the CLI, only on the web.
 
 ## Setup
 
-1. Make sure you have the latest Ruby installed in your machine. If you need help installing Ruby, take a look at the [official installation guide](https://www.ruby-lang.org/en/documentation/installation/).
+1. Make sure you have the Ruby 2.6.4 installed in your machine. If you need help installing Ruby, take a look at the [official installation guide](https://www.ruby-lang.org/en/documentation/installation/).
 
 2. Install the [bundler](http://bundler.io/) and [rails](https://rubyonrails.org/) gems by running:
 
-    ```gem install bundler rails```
+    ```gem install bundler```
 
-3. Create a Rails app:
-
-    ```rails new toy_robot```
-
-4. Change to the app directory:
+3. Go to the a Rails app:
 
     ```cd toy_robot```
 
-5. Install dependencies:
+4. Install dependencies:
 
     ```bundle install```
 
-And you're ready to go!
+5. Have Fun!
+
+# Examples
+
+From string argument
+```
+./lib/toy_robot/cli.rb -c "PLACE 1,2,SOUTH|REPORT|MOVE|PLACE 1,2,SOUTH|MOVE|REPORT|RIGHT|LEFT|RIGHT|LEFT|MOVE|MOVE|REPORT"
+
+./lib/toy_robot/cli.rb -c "PLACE 0,0,SOUTH|MOVE|REPORT|PLACE 0,0,SOUTH|LEFT|REPORT|PLACE 1,2,EAST|MOVE|MOVE|RIGHT|MOVE|REPORT"
+```
+
+From a file
+```
+./lib/toy_robot/cli.rb -f lib/toy_robot/commands.example
+```
