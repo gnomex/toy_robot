@@ -24,10 +24,6 @@ module ToyRobot
       @position = {}
     end
 
-=begin
-TODO: add support to step-by-step command execution with kind of backtrack log to use in rails
-=end
-
     def go!
       @commands.each do |cmd|
         # traversing over the board ignoring strange commands if given
