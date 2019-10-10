@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
-.divider {
+ 
+ .divider {
   padding: 40px;
 	position: relative;
 	margin: 40px;
