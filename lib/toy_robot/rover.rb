@@ -22,12 +22,14 @@ module ToyRobot
       @is_on_the_table = false
       @commands = input
       @position = {}
+      @backtracking = []
     end
 
     def go!
       @commands.each do |cmd|
         # traversing over the board ignoring strange commands if given
         traverse cmd if ALLOWED_COMMANDS.include? cmd.split(' ').first
+        @backtracking << spy
       end
     end
 
@@ -48,7 +50,7 @@ module ToyRobot
     end
 
     def show_the_path
-      []
+      @backtracking
     end
 
     private

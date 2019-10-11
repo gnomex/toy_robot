@@ -5,14 +5,11 @@ class RobotsController < ApplicationController
   end
 
   def create
+    commands = params[:cmd][:commands]
 
-    logger.info "@@@@@@ PARAMS: #{params.inspect}"
-
-    robot = ToyRobot::Rover.new([])
+    robot = ToyRobot::Rover.new([commands])
     robot.go!
 
-    respond_to do |format|
-  		format.json { render json: robot.show_the_path }
-    end
+    render json: { steps: robot.show_the_path }
   end
 end

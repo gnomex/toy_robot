@@ -23,7 +23,7 @@
 }
 
 .effect {
-	transition: width 2s, height 2s, background-color 2s, transform 2s;
+  transition: 1s linear all;
 }
 
 .roverboard {

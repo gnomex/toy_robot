@@ -7,10 +7,19 @@
       <div class="white effect south">&#x1f916;</div>
       <div class="white effect west">&#x1f916;</div>
 
+      <div>
+        <button id="rockmi" class="black"></button>
+      </div>
+
+      <%= form_for :cmd, url: robots_create_path, html: {class: 'validate', id: 'robot-form'}, remote: true do |f| %>
+        <%= f.text_area :commands %>
+        <%= f.submit 'RUN!' %>
+      <% end  %>
+
     </div>
 
     <div class='column'>
-      <div class="roverboard">
+      <div id="roverboard" class="roverboard">
       	<!-- 1st -->
       	<div id="00" class="white effect"></div>
       	<div id="01" class="black effect"></div>
