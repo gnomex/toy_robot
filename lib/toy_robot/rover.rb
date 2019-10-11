@@ -47,6 +47,10 @@ module ToyRobot
       [@position, @direction_to_move]
     end
 
+    def show_the_path
+      []
+    end
+
     private
 
     def traverse(cmd)
