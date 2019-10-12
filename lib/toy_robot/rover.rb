@@ -29,6 +29,7 @@ module ToyRobot
       @commands.each do |cmd|
         # traversing over the board ignoring strange commands if given
         traverse cmd if ALLOWED_COMMANDS.include? cmd.split(' ').first
+        
         @backtracking << spy
       end
     end
@@ -46,7 +47,11 @@ module ToyRobot
     end
 
     def spy
-      [@position, @direction_to_move]
+      { 
+        x: @position[:x],
+        y: @position[:y],
+        f: @direction_to_move.downcase
+      }
     end
 
     def show_the_path
