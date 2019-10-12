@@ -1,20 +1,16 @@
 <div class='wrapper'>
   <div class='row'>
     <div class='column'>
-      <p id="notice"><%= notice %></p>
-      <div class="white effect north">&#x1f916;</div>
-      <div class="white effect east">&#x1f916;</div>
-      <div class="white effect south">&#x1f916;</div>
-      <div class="white effect west">&#x1f916;</div>
 
       <div>
-        <button id="rockmi" class="black"></button>
+        <label for="rcmd" class="my-label">Give your orders ~#</label>
+        <textarea id="rcmd" name="cmd" rows="10" cols="40" required autofocus></textarea>
       </div>
 
-      <%= form_for :cmd, url: robots_create_path, html: {class: 'validate', id: 'robot-form'}, remote: true do |f| %>
-        <%= f.text_area :commands %>
-        <%= f.submit 'RUN!' %>
-      <% end  %>
+
+      <div class="btn_count">
+        <div id="rockmi" class="btn"><span>RUN</span></div>
+      </div>
 
     </div>
 

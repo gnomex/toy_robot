@@ -8,7 +8,10 @@ $('#robot-form').on('ajax:success', function(e, data, status, xhr){
 
 let original_board = $("#roverboard").html();
 
-$("#rockmi").click(function () {
+$("#rockmi").click( () => {
+
+  $("#rcmd").prop('disabled', true);
+
   Rails.ajax({
     type:"POST",
     url:"/robots/create",
@@ -28,14 +31,18 @@ $("#rockmi").click(function () {
     {x: 4, y:4, f: 'south'},
     {x: 4, y:4, f: 'east'},
     {x: 4, y:4, f: 'north'},
-  ]);
+  ], () => {
+    $("#rcmd").prop('disabled', false);
+    // $("#rcmd").val('');
+    $("#rcmd").focus();
+  });
 });
 
 
 /*
   { x, y, f}
 */
-let animate_robot = (arr) => {
+let animate_robot = (arr, cb) => {
   arr.forEach(function (e, i) {
     let idx = "#" + e["x"] + e["y"];
 
@@ -43,6 +50,10 @@ let animate_robot = (arr) => {
       $("#roverboard").html(original_board);
 
       $(idx).addClass(e["f"]).text('🤖');
+
+      if (i === (arr.length - 1)) {
+        cb();
+      }
     }, i * 1000);
   })
 }
