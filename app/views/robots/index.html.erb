@@ -1,16 +1,20 @@
 <div class='wrapper'>
   <div class='row'>
     <div class='column'>
-      <p id="notice"><%= notice %></p>
-      <div class="white effect">&#x1f916;</div>
-      <div class="white effect north">&#x1f916;</div>
-      <div class="white effect east">&#x1f916;</div>
-      <div class="white effect south">&#x1f916;</div>
-      <div class="white effect west">&#x1f916;</div>
+
+      <div>
+        <label for="rcmd" class="my-label">Give your orders ~#</label>
+        <textarea id="rcmd" name="cmd" rows="20" cols="40" required autofocus></textarea>
+      </div>
+
+      <div class="btn_count">
+        <div id="rockmi" class="btn"><span>RUN</span></div>
+      </div>
+      
     </div>
 
     <div class='column'>
-      <div class="roverboard">
+      <div id="roverboard" class="roverboard">
       	<!-- 1st -->
       	<div id="00" class="white effect"></div>
       	<div id="01" class="black effect"></div>
@@ -45,3 +49,6 @@
     </div>
   </div>
 </div>
+
+
+<%= javascript_pack_tag 'robots' %>

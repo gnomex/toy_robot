@@ -22,12 +22,17 @@ module ToyRobot
       @is_on_the_table = false
       @commands = input
       @position = {}
+      @backtracking = []
     end
 
     def go!
       @commands.each do |cmd|
         # traversing over the board ignoring strange commands if given
-        traverse cmd if ALLOWED_COMMANDS.include? cmd.split(' ').first
+        if ALLOWED_COMMANDS.include? cmd.split(' ').first
+          traverse cmd 
+
+          put_on_path!
+        end
       end
     end
 
@@ -43,8 +48,18 @@ module ToyRobot
       "Robot at (#{@position[:x]},#{@position[:y]}) moving to #{@direction_to_move}"
     end
 
-    def spy
-      [@position, @direction_to_move]
+    def put_on_path!
+      return if @position.empty? && @direction_to_move.nil?
+
+      @backtracking << { 
+        x: @position[:x],
+        y: @position[:y],
+        f: @direction_to_move.downcase
+      }
+    end
+
+    def show_the_path
+      @backtracking
     end
 
     private
@@ -61,7 +76,7 @@ module ToyRobot
         return place_on_board(x: x.to_i, y: y.to_i, f: f)
       end
 
-      return unless is_on_the_table? #JUST IGNORE IF NOT ON THE TABLE!
+      return unless is_on_the_table? # just ignore if isn't on the table
 
       return rotate cmd if cmd == "LEFT" || cmd == "RIGHT"  
       

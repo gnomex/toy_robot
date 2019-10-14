@@ -1,12 +1,5 @@
 # Toy Robot Simulator
-
-## Table of contents:
-
-* [Description](./README.md#description)
-  * [Constraints](./README.md#constraints)
-  * [Example Input and Output](./README.md#example-input-and-output)
-  * [Deliverables](./README.md#deliverables)
-* [Setup](./README.md#setup)
+    a robot simulator on RoR
 
 ## Description
 
@@ -16,7 +9,7 @@
 
 * The robot is free to roam around the surface of the table, but must be prevented from falling to destruction. Any movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
 
-Create an application that can read in commands of the following form:
+There is an application that can read in commands of the following form:
 
 ### Command Line Interface (CLI)
 
@@ -38,21 +31,34 @@ REPORT
 
 * `LEFT` and `RIGHT` will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
 
-* `REPORT` will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
+* `REPORT` will announce the X,Y and F of the robot - Only in CLI version
 
 * A robot that is not on the table can choose to ignore the `MOVE`, `LEFT`, `RIGHT` and `REPORT` commands.
 
-* Inputs could be from a file or STDIN, as the developer chooses.
+* Inputs could be from a file or STDIN
 
-* Provide test data to exercise the application.
+* Provided test data at `lib/toy_robot/commands*.example`
+
+#### Examples
+
+From string `-c` argument using pipe `|` separator
+```
+./lib/toy_robot/cli.rb -c "PLACE 1,2,SOUTH|REPORT|MOVE|PLACE 1,2,SOUTH|MOVE|REPORT|RIGHT|LEFT|RIGHT|LEFT|MOVE|MOVE|REPORT"
+
+./lib/toy_robot/cli.rb -c "PLACE 0,0,SOUTH|MOVE|REPORT|PLACE 0,0,SOUTH|LEFT|REPORT|PLACE 1,2,EAST|MOVE|MOVE|RIGHT|MOVE|REPORT"
+```
+
+From a file `-f`
+```
+./lib/toy_robot/cli.rb -f lib/toy_robot/commands.example
+```
 
 ### WEB
 
-You have to create a simple (no complex layout needed) web application, showing the table and the position and direction of the robot on the table (if robot already placed on table). All commands must update robot position, in other words, the command's output should be visible on the table, invalidating the necessity of the `REPORT` command.
-
-You are free to decide how to receive commands, being it in batches or individually, but the commands must be "processed" individually. Meaning all commands must update the robot position on the table in a way the user can understand the path the robot is following.
-
-* All commands (except `REPORT` which is unnecessary for the Web Version) should work exactly as on the CLI.
+* [Setup](./README.md#setup) first
+* run `rails s`
+* open `localhost:3000`
+* have fun!
 
 ### Constraints
 
@@ -68,7 +74,7 @@ You are free to decide how to receive commands, being it in batches or individua
     MOVE
     REPORT
 
-Expected output:
+Expected output on CLI
 
     0,1,SOUTH
 
@@ -78,7 +84,7 @@ Expected output:
     LEFT
     REPORT
 
-Expected output:
+Expected output on CLI
 
     0,0,EAST
 
@@ -91,18 +97,9 @@ Expected output:
     MOVE
     REPORT
 
-Expected output
+Expected output on CLI
 
     3,3,SOUTH
-
-### Deliverables
-
-Please provide your source code, and any test code/data you used to
-build your solution.
-
-Please engineer your solution to a standard you consider suitable for
-production. It is not required to provide any graphical output showing the
-movement of the toy robot on the CLI, only on the web.
 
 ## Setup
 
@@ -122,16 +119,3 @@ movement of the toy robot on the CLI, only on the web.
 
 5. Have Fun!
 
-# Examples
-
-From string argument
-```
-./lib/toy_robot/cli.rb -c "PLACE 1,2,SOUTH|REPORT|MOVE|PLACE 1,2,SOUTH|MOVE|REPORT|RIGHT|LEFT|RIGHT|LEFT|MOVE|MOVE|REPORT"
-
-./lib/toy_robot/cli.rb -c "PLACE 0,0,SOUTH|MOVE|REPORT|PLACE 0,0,SOUTH|LEFT|REPORT|PLACE 1,2,EAST|MOVE|MOVE|RIGHT|MOVE|REPORT"
-```
-
-From a file
-```
-./lib/toy_robot/cli.rb -f lib/toy_robot/commands.example
-```

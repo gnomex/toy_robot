@@ -5,9 +5,13 @@ class RobotsController < ApplicationController
   end
 
   def create
-    # robot = ToyRobot::Rover.new([])
-    # robot.go!
+    commands = params[:cmd] #[:commands]
 
-    # @backtracking = robot.history
+    logger.info "received #{commands.class} params are #{commands}"
+
+    robot = ToyRobot::Rover.new(commands.split("|"))
+    robot.go!
+
+    render json: { steps: robot.show_the_path }
   end
 end
