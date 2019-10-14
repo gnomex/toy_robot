@@ -1,7 +1,10 @@
 const original_board = $("#roverboard").html();
 
-$("#rockmi").click( () => {
+let reset_board = () => {
+  $("#roverboard").html(original_board);
+}
 
+$("#rockmi").click( () => {
   let commands = $("#rcmd").val();
 
   if (!commands) { 
@@ -9,6 +12,7 @@ $("#rockmi").click( () => {
     return;
   }
 
+  reset_board();
   disble_form();
 
   Rails.ajax({
@@ -17,7 +21,13 @@ $("#rockmi").click( () => {
     dataType: 'json',
     data: "cmd=" + sanitize_input(commands).join("|"),
     
-    success: (result) => { animate_robot(result["steps"], enable_form) },
+    success: (result) => { 
+      if(result["steps"]) {
+        animate_robot(result["steps"], enable_form);
+      }
+
+      enable_form();
+    },
     error: (result) => { enable_form() }
   });
 });
@@ -43,13 +53,14 @@ let sanitize_input = (input) => {
 
 /*
   { x, y, f}
+  cb: called on right time
 */
 let animate_robot = (arr, cb) => {
   arr.forEach(function (e, i) {
     let idx = "#" + e["x"] + e["y"];
 
     setTimeout(function() {
-      $("#roverboard").html(original_board);
+      reset_board();
 
       $(idx).addClass(e["f"]).text('🤖');
 

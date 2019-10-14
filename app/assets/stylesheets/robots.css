@@ -20,6 +20,8 @@
   flex-basis: 100%;
   flex: 1;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .effect {
@@ -30,7 +32,7 @@
   width: 400px;
   height: 400px;
   margin: 20px;
-  border: 25px solid #333;
+  border: 10px solid #333;
 }
 
 .black {
